@@ -7,6 +7,8 @@ To develop an LSTM-based model for recognizing the named entities in the text.
 * The dataset used has a number of sentences, and each words have their tags.
 * We have to vectorize these words using Embedding techniques to train our model.
 * Bidirectional Recurrent Neural Networks connect two hidden layers of opposite directions to the same output.
+* ![image](https://github.com/AbishekAnand15/named-entity-recognition/assets/118706942/270639e1-3db1-4711-be84-9c0295992e07)
+
 
 ## DESIGN STEPS
 1. Import the necessary packages.
@@ -18,6 +20,11 @@ To develop an LSTM-based model for recognizing the named entities in the text.
 7. We compile the model to fit the train sets and validation sets.
 
 ## PROGRAM:
+```
+Developed by:Adhithya Perumal.D
+Register no:212222230007
+```
+
 ```python
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -27,7 +34,7 @@ from sklearn.model_selection import train_test_split
 from keras import layers
 from keras.models import Model
 
-data = pd.read_csv("ner_dataset.csv", encoding="latin1")
+data = pd.read_csv("ner_dataset (1).csv", encoding="latin1")
 data.head(50)
 data = data.fillna(method="ffill")
 data.head()
@@ -115,7 +122,7 @@ history = model.fit(
     validation_data=(X_test,y_test),
     batch_size=45,
     epochs=3,)
-
+print("Adhithya Perumal D 212222230007")
 metrics = pd.DataFrame(model.history.history)
 metrics.head()
 metrics[['accuracy','val_accuracy']].plot()
@@ -125,25 +132,22 @@ i = 20
 p = model.predict(np.array([X_test[i]]))
 p = np.argmax(p, axis=-1)
 y_true = y_test[i]
+print("Adhithya Perumal D 212222230007")
 print("{:15}{:5}\t {}\n".format("Word", "True", "Pred"))
 print("-" *30)
+print("Adhithya Perumal D 212222230007")
 for w, true, pred in zip(X_test[i], y_true, p[0]):
     print("{:15}{}\t{}".format(words[w-1], tags[true], tags[pred]))
 ```
 
 ## OUTPUT:
 ### TRAINING LOSS, VALIDATION LOSS VS ITERATION PLOT:
-![Screenshot 2024-05-07 232249](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/6e32a8c8-1043-4376-bd44-aac64d03fa47)
+![Screenshot 2024-05-13 004130](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/5d851ddf-634b-4397-96d8-c7bdd03d8648)
 
-![Screenshot 2024-05-07 233438](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/f2fbcb44-1062-4816-8131-396bbfa4771e)
-
-![Screenshot 2024-05-07 233459](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/088eb4b7-4d8c-49b0-8dc9-324b878b1c02)
+![Screenshot 2024-05-13 004010](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/7093491d-1b1e-4317-8236-94e7b29c2e20)
 
 ### SAMPLE TEXT PREDICTION:
-![Screenshot 2024-05-07 232249](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/321a4102-5d3a-4692-8d75-4c4372ad669d)
-
-![Screenshot 2024-05-07 234530](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/4666460a-9c2d-4d9f-bd20-b37dd2c8bfff)
-
+![Screenshot 2024-05-13 003908](https://github.com/Adhithya4116/named-entity-recognition/assets/118707079/0516cbca-118f-4134-a970-d50d1624372f)
 
 
 ## RESULT:
